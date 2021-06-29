@@ -2,15 +2,19 @@
 # Description : url-monitor.py is a simple script that monitors the HTTP code of a passed website
 # HTTP codes verified -> 200, 401, 403, 404
 # Author: tomisrd
-
+# Usage: url-monitor.py --url/-u <http://example.com> --list/-L <url.lst>
 
 
 import requests
+#import click
+
+#@click.command()
+#@click.option('--url', default=None, help='Url in format http://example.com ')
 
 
 def count_url_letters(url):
+	# Count number of letters in urls
 	print(len(url))
-
 
 
 def check_url_http_status_code(url):
@@ -40,7 +44,17 @@ def check_url_http_status_code(url):
 		print(url + " is down - " + str(status_code))
 
 # Creating my list
-my_list_of_website= ['https://google.com/','https://www.youtube.com/','https://twitter.com/login','https://www.twitch.tv/']
+#my_list_of_website= ['https://google.com/','amazon.com','https://www.youtube.com/','https://twitter.com/login','https://www.twitch.tv/']
+my_list_of_website= []
+
+# Open filename urls.lst
+f = open("urls.lst","r")
+#print(f.read())
+urls=f.readlines()
+for url in urls:
+	my_list_of_website.append(url)
+	print(my_list_of_website)
+
 
 # Loop through my_list_of_website 
 for urls in my_list_of_website:
